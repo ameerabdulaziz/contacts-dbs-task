@@ -8,6 +8,7 @@ django = "==4.2"
 djangorestframework = "*"
 django-rest-swagger = "*"
 django-redis = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
