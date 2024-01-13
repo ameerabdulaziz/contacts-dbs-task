@@ -7,3 +7,4 @@ from .serializers import ContactSerializer
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    search_fields = ['name', 'email', 'phone']
