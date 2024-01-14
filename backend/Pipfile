@@ -9,6 +9,7 @@ djangorestframework = "*"
 django-rest-swagger = "*"
 django-redis = "*"
 drf-yasg = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
