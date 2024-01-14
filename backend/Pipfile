@@ -10,6 +10,7 @@ django-rest-swagger = "*"
 django-redis = "*"
 drf-yasg = "*"
 djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
