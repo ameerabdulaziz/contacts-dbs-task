@@ -10,6 +10,7 @@ class Contact(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='contacts_updated')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    version = models.IntegerField(default=1)
 
     def __str__(self):
         return f'{self.name} - {self.phone}'

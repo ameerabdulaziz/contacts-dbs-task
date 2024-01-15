@@ -9,7 +9,7 @@ class ContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'phone', 'updated_at', 'updated_by']
+        fields = ['name', 'email', 'phone', 'updated_at', 'updated_by', 'version']
 
     def get_updated_at(self, instance):
         """ Custom method to format 'updated_at' as a nice datetime format"""
@@ -18,3 +18,14 @@ class ContactSerializer(serializers.ModelSerializer):
     def get_updated_by(self, instance):
         """Custom method to get the username for 'updated_by'"""
         return instance.updated_by.username if instance.updated_by else None
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.phone = validated_data.get('phone', instance.phone)
+        # Check version and update if needed
+        if instance.version != validated_data['version']:
+            raise serializers.ValidationError("Conflict: Contact has been updated by another user.")
+        instance.version += 1
+        instance.save()
+        return instance
